@@ -18,12 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ui.notesapp.NotesType
 import com.ui.notesapp.ViewModel.NotesViewModel
 
 @Composable
- fun addItems(modifier: Modifier = Modifier.fillMaxSize(),viewModel: NotesViewModel){
-
+ fun addItems(modifier: Modifier = Modifier.fillMaxSize(),viewModel: NotesViewModel,navController: NavController){
      var Title by remember {
          mutableStateOf("")
      }
@@ -45,7 +45,9 @@ import com.ui.notesapp.ViewModel.NotesViewModel
         }, label = { Text(text = "Enter Description")})
         Spacer(
             modifier = Modifier.padding(5.dp))
-        Button(onClick = { viewModel.insertNote(Title,Desciption) }, modifier = Modifier.align(Alignment.CenterHorizontally))
+        Button(onClick = { viewModel.insertNote(Title,Desciption)
+//                         navController.navigate("HomeScreen")
+                         }, modifier = Modifier.align(Alignment.CenterHorizontally))
         {
             Text(text = "Add Items")
         }
